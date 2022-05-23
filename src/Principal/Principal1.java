@@ -5,6 +5,8 @@
  */
 package Principal;
 
+import Estudiantes.Ingreso;
+
 /**
  *
  * @author Anyel Vargas
@@ -16,6 +18,7 @@ public class Principal1 extends javax.swing.JFrame {
      */
     public Principal1() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -27,21 +30,125 @@ public class Principal1 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        Inicio = new javax.swing.JButton();
+        Inicio1 = new javax.swing.JButton();
+        Inicio2 = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel1.setFont(new java.awt.Font("Maiandra GD", 1, 24)); // NOI18N
+        jLabel1.setText("Seleccione su rol");
+
+        Inicio.setFont(new java.awt.Font("Maiandra GD", 1, 18)); // NOI18N
+        Inicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes1/Docentes1.png"))); // NOI18N
+        Inicio.setText("Docentes");
+        Inicio.setContentAreaFilled(false);
+        Inicio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Inicio.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Inicio.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes1/Docentes1.png"))); // NOI18N
+        Inicio.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes1/Docentes2.png"))); // NOI18N
+        Inicio.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        Inicio.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        Inicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                InicioActionPerformed(evt);
+            }
+        });
+
+        Inicio1.setFont(new java.awt.Font("Maiandra GD", 1, 18)); // NOI18N
+        Inicio1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes1/Admi1.png"))); // NOI18N
+        Inicio1.setText("Administradores");
+        Inicio1.setContentAreaFilled(false);
+        Inicio1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Inicio1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Inicio1.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes1/Admi1.png"))); // NOI18N
+        Inicio1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes1/Admi2.png"))); // NOI18N
+        Inicio1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        Inicio1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        Inicio1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Inicio1ActionPerformed(evt);
+            }
+        });
+
+        Inicio2.setFont(new java.awt.Font("Maiandra GD", 1, 18)); // NOI18N
+        Inicio2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes1/Estudiantes1.png"))); // NOI18N
+        Inicio2.setText("Estudiantes");
+        Inicio2.setContentAreaFilled(false);
+        Inicio2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Inicio2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Inicio2.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes1/Estudiantes1.png"))); // NOI18N
+        Inicio2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes1/Estudiantes2.png"))); // NOI18N
+        Inicio2.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        Inicio2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        Inicio2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Inicio2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(Inicio2)
+                .addGap(27, 27, 27)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(Inicio1)
+                        .addGap(40, 40, 40)
+                        .addComponent(Inicio))
+                    .addComponent(jLabel1))
+                .addContainerGap(34, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(Inicio2)
+                        .addGap(63, 63, 63))
+                    .addComponent(Inicio1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(Inicio)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addGap(28, 28, 28))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void InicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InicioActionPerformed
+        
+    }//GEN-LAST:event_InicioActionPerformed
+
+    private void Inicio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Inicio1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Inicio1ActionPerformed
+
+    private void Inicio2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Inicio2ActionPerformed
+        Ingreso inicio = new Ingreso();
+        inicio.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_Inicio2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +186,10 @@ public class Principal1 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Inicio;
+    private javax.swing.JButton Inicio1;
+    private javax.swing.JButton Inicio2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

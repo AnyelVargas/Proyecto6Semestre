@@ -5,6 +5,8 @@
  */
 package Estudiantes;
 
+import Principal.Principal1;
+
 /**
  *
  * @author Anyel Vargas
@@ -41,6 +43,8 @@ public class Materia extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         jTable4 = new javax.swing.JTable();
         jLabel8 = new javax.swing.JLabel();
+        Inicio = new javax.swing.JButton();
+        Inicio1 = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -110,6 +114,38 @@ public class Materia extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         jLabel8.setText("Notas");
 
+        Inicio.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        Inicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Menu1.png"))); // NOI18N
+        Inicio.setText("Inicio");
+        Inicio.setContentAreaFilled(false);
+        Inicio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Inicio.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Inicio.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Menu1.png"))); // NOI18N
+        Inicio.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Menu2.png"))); // NOI18N
+        Inicio.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        Inicio.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        Inicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                InicioActionPerformed(evt);
+            }
+        });
+
+        Inicio1.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        Inicio1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Atras1.png"))); // NOI18N
+        Inicio1.setText("Atrás");
+        Inicio1.setContentAreaFilled(false);
+        Inicio1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Inicio1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Inicio1.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Atras1.png"))); // NOI18N
+        Inicio1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Atras2.png"))); // NOI18N
+        Inicio1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        Inicio1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        Inicio1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Inicio1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -125,19 +161,26 @@ public class Materia extends javax.swing.JFrame {
                             .addComponent(jLabel2)
                             .addComponent(jLabel1)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(172, 172, 172)
-                        .addComponent(jLabel8))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(19, 19, 19)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(Inicio1)
+                                .addGap(56, 56, 56)
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(Inicio))
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(27, 27, 27)
-                .addComponent(jLabel8)
-                .addGap(15, 15, 15)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Inicio1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8)
+                    .addComponent(Inicio, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
@@ -149,7 +192,7 @@ public class Materia extends javax.swing.JFrame {
                 .addComponent(jLabel7)
                 .addGap(30, 30, 30)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -160,11 +203,23 @@ public class Materia extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void InicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InicioActionPerformed
+        Principal1 inicio = new Principal1();
+        inicio.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_InicioActionPerformed
+
+    private void Inicio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Inicio1ActionPerformed
+        SeleccionarMateria materias = new SeleccionarMateria();
+        materias.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_Inicio1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -202,6 +257,8 @@ public class Materia extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Inicio;
+    private javax.swing.JButton Inicio1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
