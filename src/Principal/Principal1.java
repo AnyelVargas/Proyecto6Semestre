@@ -5,6 +5,7 @@
  */
 package Principal;
 
+import Docentes.Docentes1;
 import Estudiantes.Ingreso;
 
 /**
@@ -137,7 +138,9 @@ public class Principal1 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void InicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InicioActionPerformed
-        
+    Docentes1 ingresodocentes = new Docentes1();
+    ingresodocentes.setVisible(true);
+    this.setVisible(false);
     }//GEN-LAST:event_InicioActionPerformed
 
     private void Inicio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Inicio1ActionPerformed
