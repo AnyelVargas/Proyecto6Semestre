@@ -5,6 +5,7 @@
  */
 package Principal;
 
+import Administradores.Inicio;
 import Docentes.Docentes1;
 import Estudiantes.Ingreso;
 
@@ -144,7 +145,9 @@ public class Principal1 extends javax.swing.JFrame {
     }//GEN-LAST:event_InicioActionPerformed
 
     private void Inicio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Inicio1ActionPerformed
-        // TODO add your handling code here:
+    Inicio ingresoadmis = new Inicio();
+    ingresoadmis.setVisible(true);
+    this.setVisible(false);
     }//GEN-LAST:event_Inicio1ActionPerformed
 
     private void Inicio2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Inicio2ActionPerformed
