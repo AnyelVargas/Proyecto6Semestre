@@ -5,7 +5,13 @@
  */
 package Estudiantes;
 
+import Administradores.DocentesOEstudiantes;
 import Principal.Principal1;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -35,9 +41,9 @@ public class Ingreso extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jButton2 = new javax.swing.JButton();
+        txt_user = new javax.swing.JTextField();
+        txt_password = new javax.swing.JPasswordField();
+        log = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -70,28 +76,28 @@ public class Ingreso extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
         jLabel2.setText("Contraseña:");
 
-        jTextField1.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txt_user.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        txt_user.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txt_userActionPerformed(evt);
             }
         });
 
-        jPasswordField1.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        txt_password.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
 
-        jButton2.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/siguiente1.png"))); // NOI18N
-        jButton2.setText("Ingresar");
-        jButton2.setContentAreaFilled(false);
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton2.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/siguiente1.png"))); // NOI18N
-        jButton2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/siguiente2.png"))); // NOI18N
-        jButton2.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        log.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        log.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/siguiente1.png"))); // NOI18N
+        log.setText("Ingresar");
+        log.setContentAreaFilled(false);
+        log.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        log.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        log.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/siguiente1.png"))); // NOI18N
+        log.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/siguiente2.png"))); // NOI18N
+        log.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        log.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        log.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                logActionPerformed(evt);
             }
         });
 
@@ -109,14 +115,14 @@ public class Ingreso extends javax.swing.JFrame {
                             .addComponent(jLabel2))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField1)
-                            .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txt_user)
+                            .addComponent(txt_password, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(101, 101, 101))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(Inicio)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(log)
                 .addGap(30, 30, 30))
         );
         jPanel1Layout.setVerticalGroup(
@@ -127,15 +133,15 @@ public class Ingreso extends javax.swing.JFrame {
                 .addGap(50, 50, 50)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_user, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(37, 37, 37)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Inicio, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE))
+                    .addComponent(log, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -153,9 +159,9 @@ public class Ingreso extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txt_userActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_userActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txt_userActionPerformed
 
     private void InicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InicioActionPerformed
     Principal1 inicio = new Principal1();
@@ -163,9 +169,30 @@ public class Ingreso extends javax.swing.JFrame {
     this.setVisible(false);
     }//GEN-LAST:event_InicioActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void logActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logActionPerformed
+        try {
+            String cod = "";
+            String pass = "";
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/proyecto6", "root", "");
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM estudiante WHERE Nombre =? and cod_estudiante =?");
+            ps.setString(1, txt_user.getText().trim());
+            ps.setString(2, txt_password.getText().trim());
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                Materia f = new Materia();
+                f.setVisible(true);
+                f.setLocationRelativeTo(null);
+                this.setVisible(false);
+            } else {
+                JOptionPane.showMessageDialog(null, "Datos incorrectos");
+                txt_user.setText("");
+                txt_password.setText("");
+            }
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_logActionPerformed
 
     /**
      * @param args the command line arguments
@@ -204,12 +231,12 @@ public class Ingreso extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Inicio;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JButton log;
+    private javax.swing.JPasswordField txt_password;
+    private javax.swing.JTextField txt_user;
     // End of variables declaration//GEN-END:variables
 }

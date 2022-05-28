@@ -5,7 +5,13 @@
  */
 package Docentes;
 
+import Administradores.DocentesOEstudiantes;
 import Principal.Principal1;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -31,27 +37,27 @@ public class Docentes1 extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        txt_password = new javax.swing.JPasswordField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txt_user = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        log = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 204, 102));
 
-        jPasswordField1.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        txt_password.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Bookman Old Style", 1, 18)); // NOI18N
         jLabel3.setText("Contraseña:");
 
-        jTextField1.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txt_user.setFont(new java.awt.Font("Bookman Old Style", 1, 14)); // NOI18N
+        txt_user.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txt_userActionPerformed(evt);
             }
         });
 
@@ -77,16 +83,21 @@ public class Docentes1 extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Bookman Old Style", 1, 18)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes2/siguiente1.png"))); // NOI18N
-        jButton1.setText("Siguiente");
-        jButton1.setContentAreaFilled(false);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton1.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes2/siguiente1.png"))); // NOI18N
-        jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes2/siguiente2.png"))); // NOI18N
-        jButton1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        log.setFont(new java.awt.Font("Bookman Old Style", 1, 18)); // NOI18N
+        log.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes2/siguiente1.png"))); // NOI18N
+        log.setText("Siguiente");
+        log.setContentAreaFilled(false);
+        log.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        log.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        log.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes2/siguiente1.png"))); // NOI18N
+        log.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes2/siguiente2.png"))); // NOI18N
+        log.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        log.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        log.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -104,14 +115,14 @@ public class Docentes1 extends javax.swing.JFrame {
                             .addComponent(jLabel3))
                         .addGap(35, 35, 35)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPasswordField1, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
-                            .addComponent(jTextField1))))
+                            .addComponent(txt_password, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
+                            .addComponent(txt_user))))
                 .addContainerGap(77, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(45, 45, 45)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(log)
                 .addGap(46, 46, 46))
         );
         jPanel1Layout.setVerticalGroup(
@@ -122,14 +133,14 @@ public class Docentes1 extends javax.swing.JFrame {
                 .addGap(51, 51, 51)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_user, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(log, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20))
         );
@@ -148,15 +159,40 @@ public class Docentes1 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txt_userActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_userActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txt_userActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         Principal1 inicio = new Principal1();
         inicio.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void logActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logActionPerformed
+        try {
+            String cod = "";
+            String pass = "";
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/proyecto6", "root", "");
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM docente WHERE nombre =? and cod_docente =?");
+            ps.setString(1, txt_user.getText().trim());
+            ps.setString(2, txt_password.getText().trim());
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                Docentes2 f = new Docentes2();
+                f.setVisible(true);
+                f.setLocationRelativeTo(null);
+                this.setVisible(false);
+            } else {
+                JOptionPane.showMessageDialog(null, "Datos incorrectos");
+                txt_user.setText("");
+                txt_password.setText("");
+            }
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_logActionPerformed
 
     /**
      * @param args the command line arguments
@@ -194,13 +230,13 @@ public class Docentes1 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JButton log;
+    private javax.swing.JPasswordField txt_password;
+    private javax.swing.JTextField txt_user;
     // End of variables declaration//GEN-END:variables
 }

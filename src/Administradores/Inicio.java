@@ -6,6 +6,11 @@
 package Administradores;
 
 import Principal.Principal1;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -33,10 +38,10 @@ public class Inicio extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        log = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        txt_user = new javax.swing.JTextField();
+        txt_password = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -56,12 +61,12 @@ public class Inicio extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 0));
         jLabel1.setText("Usuario");
 
-        jButton1.setBackground(new java.awt.Color(153, 153, 153));
-        jButton1.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
-        jButton1.setText("Ingresar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        log.setBackground(new java.awt.Color(153, 153, 153));
+        log.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
+        log.setText("Ingresar");
+        log.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                logActionPerformed(evt);
             }
         });
 
@@ -70,13 +75,13 @@ public class Inicio extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 0));
         jLabel2.setText("Contraseña");
 
-        jTextField1.setBackground(new java.awt.Color(255, 255, 0));
-        jTextField1.setForeground(new java.awt.Color(255, 255, 0));
+        txt_user.setBackground(new java.awt.Color(255, 255, 0));
+        txt_user.setForeground(new java.awt.Color(255, 255, 0));
 
-        jPasswordField1.setBackground(new java.awt.Color(255, 255, 0));
-        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+        txt_password.setBackground(new java.awt.Color(255, 255, 0));
+        txt_password.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField1ActionPerformed(evt);
+                txt_passwordActionPerformed(evt);
             }
         });
 
@@ -96,12 +101,12 @@ public class Inicio extends javax.swing.JFrame {
                             .addComponent(jLabel2))
                         .addGap(31, 31, 31)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
-                            .addComponent(jPasswordField1))))
+                            .addComponent(txt_user, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
+                            .addComponent(txt_password))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 168, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(log)
                 .addGap(137, 137, 137))
         );
         jPanel1Layout.setVerticalGroup(
@@ -112,13 +117,13 @@ public class Inicio extends javax.swing.JFrame {
                 .addGap(101, 101, 101)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_user, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(44, 44, 44)
-                .addComponent(jButton1)
+                .addComponent(log)
                 .addGap(38, 38, 38))
         );
 
@@ -143,13 +148,34 @@ public class Inicio extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+    private void txt_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_passwordActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField1ActionPerformed
+    }//GEN-LAST:event_txt_passwordActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void logActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logActionPerformed
+        try {
+            String cod = "";
+            String pass = "";
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/proyecto6", "root", "");
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM administrador WHERE nombre_administrador =? and cod_administrador =?");
+            ps.setString(1, txt_user.getText().trim());
+            ps.setString(2, txt_password.getText().trim());
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                DocentesOEstudiantes f = new DocentesOEstudiantes();
+                f.setVisible(true);
+                f.setLocationRelativeTo(null);
+                this.setVisible(false);
+            } else {
+                JOptionPane.showMessageDialog(null, "Datos incorrectos");
+                txt_user.setText("");
+                txt_password.setText("");
+            }
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_logActionPerformed
 
     /**
      * @param args the command line arguments
@@ -187,12 +213,12 @@ public class Inicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JButton log;
+    private javax.swing.JPasswordField txt_password;
+    private javax.swing.JTextField txt_user;
     // End of variables declaration//GEN-END:variables
 }
